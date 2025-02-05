@@ -1,14 +1,23 @@
 import '../css/app.css'
 import React from 'react'
-import { createRoot } from 'react-dom/client'
+import ReactDOM from 'react-dom/client'
+import { BrowserRouter, Routes, Route } from 'react-router'
+import { Toaster } from 'react-hot-toast'
+import ErrorBoundary from './components/ErrorBoundary'
 
-function App(): React.ReactElement {
-  return (
-    <div>
-      <h1>Hello, React!</h1>
-      <p>Let's build something cool.</p>
-    </div>
-  )
-}
+import Home from './screens/Home'
+import Dashboard from './screens/Dashboard'
+import Login from './screens/Login'
 
-createRoot(document.getElementById('root') as HTMLElement).render(<App />)
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+  <ErrorBoundary>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
+    <Toaster />
+  </ErrorBoundary>
+)
