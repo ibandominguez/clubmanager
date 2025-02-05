@@ -1,0 +1,10 @@
+{
+  "home.title": "Home",
+
+  "login.title": "Login",
+  "login.success": "Welcome!",
+  "login.error": "Incorrect credentials",
+
+  "dashboard.title": "Dashboard",
+  "dashboard.welcome": "Welcome to the application"
+}

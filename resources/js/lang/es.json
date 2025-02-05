@@ -1,0 +1,10 @@
+{
+  "home.title": "Inicio",
+
+  "login.title": "Iniciar sesión",
+  "login.success": "¡bienvenido!",
+  "login.error": "credenciales incorrectas",
+
+  "dashboard.title": "Tablero",
+  "dashboard.welcome": "Bienvenido a la aplicación"
+}
