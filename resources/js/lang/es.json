@@ -2,11 +2,15 @@
   "home.title": "Inicio",
 
   "login.title": "Iniciar sesión",
-  "login.success": "¡bienvenido!",
-  "login.error": "credenciales incorrectas",
+  "login.success": "¡Bienvenido!",
+  "login.error": "Credenciales incorrectas",
+
+  "logout.title": "Cerrar sesión",
 
   "auth.fetch.error": "Error al obtener el usuario",
 
-  "dashboard.title": "Tablero",
-  "dashboard.welcome": "Bienvenido a la aplicación"
+  "dashboard.title": "Inicio",
+  "dashboard.welcome": "Bienvenido a la aplicación",
+
+  "members.title": "Socios"
 }

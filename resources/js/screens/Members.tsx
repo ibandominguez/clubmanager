@@ -2,17 +2,17 @@ import React, { ReactElement } from 'react'
 import Screen from '../components/Screen'
 import Lang from '../services/Lang'
 
-function Dashboard(): ReactElement {
+function Members(): ReactElement {
   return (
     <Screen
-      title={Lang.get('dashboard.title')}
+      title={Lang.get('members.title')}
       contentClassName="p-3"
       redirectIfGuest={true}
       showAside={true}
     >
-      Lorem ipsum ...
+      hello world ...
     </Screen>
   )
 }
 
-export default Dashboard
+export default Members

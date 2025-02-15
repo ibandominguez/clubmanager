@@ -79,10 +79,18 @@ const Screen: React.FC<ScreenProps> = ({
             />
             <NavLinkItem
               to="/admin/members"
-              icon="home"
+              icon="group"
               title={Lang.get('members.title')}
             />
           </nav>
+          <NavLink
+            to="/"
+            onClick={() => window.localStorage.removeItem('token')}
+            className="mt-auto bg-gray-900 p-3 flex items-center text-gray-300"
+          >
+            <span className="material-symbols-outlined mr-3">logout</span>
+            <span>{Lang.get('logout.title')}</span>
+          </NavLink>
         </aside>
       )}
       <main className="w-full">

@@ -6,9 +6,10 @@ import { Toaster } from 'react-hot-toast'
 import ErrorBoundary from './components/ErrorBoundary'
 
 import Home from './screens/Home'
-import Dashboard from './screens/Dashboard'
 import Login from './screens/Login'
 import Register from './screens/Register'
+import Dashboard from './screens/Dashboard'
+import Members from './screens/Members'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <ErrorBoundary>
@@ -18,7 +19,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/admin" element={<Dashboard />} />
-        <Route path="/admin/members" element={<Dashboard />} />
+        <Route path="/admin/members" element={<Members />} />
       </Routes>
     </BrowserRouter>
     <Toaster />
