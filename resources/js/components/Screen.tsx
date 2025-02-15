@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, ReactElement } from 'react'
+import React, { useEffect, useMemo, useState, ReactElement } from 'react'
 import { useNavigate, NavLink } from 'react-router'
 import Lang from '../services/Lang'
 
@@ -44,6 +44,7 @@ const Screen: React.FC<ScreenProps> = ({
 }) => {
   const navigate = useNavigate()
   const authToken = useMemo(() => localStorage.getItem('token'), [])
+  const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false)
 
   useEffect(() => {
     if (title) document.title = title
@@ -64,7 +65,9 @@ const Screen: React.FC<ScreenProps> = ({
   return (
     <section className="flex">
       {showAside && (
-        <aside className="bg-gray-100 h-screen w-80">
+        <aside
+          className={`absolute left-0 top-0 z-9999 flex h-screen w-80 flex-shrink-0 flex-col overflow-y-hidden bg-gray-500 duration-300 ease-linear md:static md:translate-x-0 ${showMobileMenu ? 'translate-x-0' : '-translate-x-full'}`}
+        >
           <section className="flex items-center justify-center text-white h-20 bg-gray-900 font-bold text-2xl">
             LOGO
           </section>
@@ -86,7 +89,10 @@ const Screen: React.FC<ScreenProps> = ({
         {title && (
           <h2 className="text-2xl p-4 font-bold h-20 flex items-center bg-gray-200">
             {title}
-            <span className="cursor-pointer material-symbols-outlined ml-auto">
+            <span
+              onClick={() => setShowMobileMenu(!showMobileMenu)}
+              className="cursor-pointer material-symbols-outlined ml-auto md:hidden"
+            >
               menu
             </span>
           </h2>
