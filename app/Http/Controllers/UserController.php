@@ -10,9 +10,13 @@ class UserController extends Controller
 {
   public function create(Request $request): JsonResponse {
     $request->validate([
-      'name' => 'required',
-      'email' => 'required|email',
-      'password' => 'required',
+      'name' => ['required'],
+      'email' => ['required', 'email', 'unique:users,email'],
+      'password' => [
+        'required',
+        'min:8',
+        'confirmed',
+      ],
     ]);
 
     $user = User::create($request->only(['name', 'email', 'password']));

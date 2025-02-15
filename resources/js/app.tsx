@@ -8,6 +8,7 @@ import ErrorBoundary from './components/ErrorBoundary'
 import Home from './screens/Home'
 import Dashboard from './screens/Dashboard'
 import Login from './screens/Login'
+import Register from './screens/Register'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <ErrorBoundary>
@@ -15,6 +16,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </BrowserRouter>

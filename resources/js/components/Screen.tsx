@@ -3,7 +3,8 @@ import { useNavigate } from 'react-router'
 
 interface ScreenProps {
   children: React.ReactNode
-  title: string
+  title?: string
+  contentClassName?: string
   redirectIfGuest?: boolean
   redirectIfAuthenticated?: boolean
 }
@@ -11,6 +12,7 @@ interface ScreenProps {
 const Screen: React.FC<ScreenProps> = ({
   children,
   title,
+  contentClassName,
   redirectIfGuest,
   redirectIfAuthenticated
 }) => {
@@ -18,7 +20,7 @@ const Screen: React.FC<ScreenProps> = ({
   const authToken = useMemo(() => localStorage.getItem('token'), [])
 
   useEffect(() => {
-    document.title = title
+    if (title) document.title = title
     if (!authToken && redirectIfGuest) {
       navigate('/login')
     } else if (authToken && redirectIfAuthenticated) {
@@ -35,8 +37,8 @@ const Screen: React.FC<ScreenProps> = ({
 
   return (
     <>
-      <h2 className="p-2 text-2xl font-bold">{title}</h2>
-      <section className="p-2">{children}</section>
+      {title && <h2 className="text-2xl p-2 font-bold">{title}</h2>}
+      <section className={contentClassName}>{children}</section>
     </>
   )
 }

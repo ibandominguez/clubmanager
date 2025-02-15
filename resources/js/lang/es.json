@@ -5,6 +5,8 @@
   "login.success": "¡bienvenido!",
   "login.error": "credenciales incorrectas",
 
+  "auth.fetch.error": "Error al obtener el usuario",
+
   "dashboard.title": "Tablero",
   "dashboard.welcome": "Bienvenido a la aplicación"
 }
