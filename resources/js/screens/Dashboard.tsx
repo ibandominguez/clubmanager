@@ -6,7 +6,11 @@ import { useAuthStore } from '../stores/auth'
 function Dashboard(): ReactElement {
   const { logout } = useAuthStore()
   return (
-    <Screen title={Lang.get('dashboard.title')} redirectIfGuest={true}>
+    <Screen
+      title={Lang.get('dashboard.title')}
+      redirectIfGuest={true}
+      showAside={true}
+    >
       <div>Dashboard</div>
       <button onClick={logout}>Logout</button>
     </Screen>

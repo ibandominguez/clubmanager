@@ -1,17 +1,43 @@
-import React, { useEffect, useMemo } from 'react'
-import { useNavigate } from 'react-router'
+import React, { useEffect, useMemo, ReactElement } from 'react'
+import { useNavigate, NavLink } from 'react-router'
+import Lang from '../services/Lang'
 
 interface ScreenProps {
   children: React.ReactNode
   title?: string
+  showAside?: boolean
   contentClassName?: string
   redirectIfGuest?: boolean
   redirectIfAuthenticated?: boolean
 }
 
+export function NavLinkItem({
+  to,
+  icon,
+  title
+}: {
+  to: string
+  icon: string
+  title: string
+}): ReactElement {
+  return (
+    <NavLink
+      to={to}
+      end
+      className={({ isActive }) =>
+        `p-3 hover:bg-gray-200 hover:text-white border-b-2 border-white flex items-center ${isActive ? 'bg-gray-300' : ''}`
+      }
+    >
+      {icon && <span className="material-symbols-outlined mr-3">{icon}</span>}
+      <span className="text-md">{title}</span>
+    </NavLink>
+  )
+}
+
 const Screen: React.FC<ScreenProps> = ({
   children,
   title,
+  showAside,
   contentClassName,
   redirectIfGuest,
   redirectIfAuthenticated
@@ -24,7 +50,7 @@ const Screen: React.FC<ScreenProps> = ({
     if (!authToken && redirectIfGuest) {
       navigate('/login')
     } else if (authToken && redirectIfAuthenticated) {
-      navigate('/dashboard')
+      navigate('/admin')
     }
   }, [authToken])
 
@@ -36,10 +62,38 @@ const Screen: React.FC<ScreenProps> = ({
   }
 
   return (
-    <>
-      {title && <h2 className="text-2xl p-2 font-bold">{title}</h2>}
-      <section className={contentClassName}>{children}</section>
-    </>
+    <section className="flex">
+      {showAside && (
+        <aside className="bg-gray-100 h-screen w-80">
+          <section className="flex items-center justify-center text-white h-20 bg-gray-900 font-bold text-2xl">
+            LOGO
+          </section>
+          <nav>
+            <NavLinkItem
+              to="/admin"
+              icon="dashboard"
+              title={Lang.get('dashboard.title')}
+            />
+            <NavLinkItem
+              to="/admin/members"
+              icon="home"
+              title={Lang.get('members.title')}
+            />
+          </nav>
+        </aside>
+      )}
+      <main className="w-full">
+        {title && (
+          <h2 className="text-2xl p-4 font-bold h-20 flex items-center bg-gray-200">
+            {title}
+            <span className="cursor-pointer material-symbols-outlined ml-auto">
+              menu
+            </span>
+          </h2>
+        )}
+        <section className={contentClassName}>{children}</section>
+      </main>
+    </section>
   )
 }
 

@@ -10,7 +10,6 @@ export interface AuthState {
   register: (user: User) => Promise<void>
   login: (credentials: { email: string; password: string }) => Promise<void>
   logout: () => Promise<void>
-  fetchUser: () => Promise<void>
 }
 
 export const useAuthStore = create<AuthState>((set) => ({
@@ -35,7 +34,7 @@ export const useAuthStore = create<AuthState>((set) => ({
       })
       localStorage.setItem('token', response.data.token)
       set({ auth: response.data, token: response.data.token })
-      window.location.href = '/dashboard'
+      window.location.href = '/admin'
     } catch (error) {
       toast.error(Lang.get('login.error'))
     }
@@ -45,18 +44,5 @@ export const useAuthStore = create<AuthState>((set) => ({
     set({ auth: null, token: null })
     localStorage.removeItem('token')
     window.location.href = '/login'
-  },
-
-  fetchUser: async () => {
-    try {
-      const response = await axios.get('/api/users/me', {
-        headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
-      })
-      set({ auth: response.data })
-    } catch (error) {
-      toast.error(
-        `${Lang.get('auth.fetch.error')}: ${error.response.data.message}`
-      )
-    }
   }
 }))
