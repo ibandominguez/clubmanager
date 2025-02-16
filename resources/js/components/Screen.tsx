@@ -69,7 +69,7 @@ const Screen: React.FC<ScreenProps> = ({
           className={`absolute left-0 top-0 z-9999 flex h-screen w-80 flex-shrink-0 flex-col overflow-y-hidden bg-gray-500 duration-300 ease-linear md:static md:translate-x-0 ${showMobileMenu ? 'translate-x-0' : '-translate-x-full'}`}
         >
           <section className="flex items-center justify-center text-white h-20 bg-gray-900 font-bold text-2xl">
-            LOGO
+            CLUBMANAGER
           </section>
           <nav>
             <NavLinkItem
@@ -86,7 +86,7 @@ const Screen: React.FC<ScreenProps> = ({
           <NavLink
             to="/"
             onClick={() => window.localStorage.removeItem('token')}
-            className="mt-auto bg-gray-900 p-3 flex items-center text-gray-300"
+            className="mt-auto bg-gray-800 p-3 flex justify-center items-center text-gray-300"
           >
             <span className="material-symbols-outlined mr-3">logout</span>
             <span>{Lang.get('logout.title')}</span>
