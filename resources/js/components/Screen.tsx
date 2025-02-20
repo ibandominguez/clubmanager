@@ -28,7 +28,7 @@ export function NavLinkItem({
       to={to}
       end
       className={({ isActive }) =>
-        `p-3 hover:bg-gray-200 hover:text-white hover:rounded-sm border-b-2 border-white flex items-center ${isActive ? 'bg-gray-300' : ''}`
+        `p-3 hover:bg-gray-600 hover:text-white hover:rounded-sm border-b-2 border-white flex items-center ${isActive ? 'bg-gray-500' : ''}`
       }
     >
       {icon && (
@@ -85,7 +85,7 @@ const Screen: React.FC<ScreenProps> = ({
       {showAside && (
         <aside
           style={{ zIndex: 9999999 }}
-          className={`absolute left-0 top-0 flex h-screen w-60 flex-shrink-0 flex-col overflow-y-hidden bg-gray-500 duration-300 ease-linear md:static md:translate-x-0 ${showMobileMenu ? 'translate-x-0' : '-translate-x-full'}`}
+          className={`absolute left-0 top-0 flex h-screen w-60 flex-shrink-0 flex-col overflow-y-hidden bg-gray-400 duration-300 ease-linear md:static md:translate-x-0 ${showMobileMenu ? 'translate-x-0' : '-translate-x-full'}`}
         >
           <section className="flex items-center justify-center text-white h-20 bg-gray-900 font-bold text-2xl">
             CLUBMANAGER
