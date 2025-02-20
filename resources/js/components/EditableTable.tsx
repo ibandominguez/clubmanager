@@ -127,7 +127,7 @@ export default function EditableTable<T>({
           <Form<T>
             buttonIcon="send"
             buttonTitle="Enviar"
-            className="flex flex-wrap"
+            inputWrapperClassName="flex flex-wrap"
             onSubmit={(item) => handleOnUpdate(item as T)}
             fields={columns.map((column) => ({
               label: column.title,

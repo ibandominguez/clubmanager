@@ -11,6 +11,7 @@ export interface FormProps<T> {
   buttonTitle: string
   buttonIcon?: string
   className?: string
+  inputWrapperClassName?: string
   onSubmit: (data: T) => void
 }
 
@@ -19,6 +20,7 @@ export default function Form<T>({
   buttonTitle,
   buttonIcon,
   className,
+  inputWrapperClassName,
   onSubmit
 }: FormProps<T>): ReactElement {
   const [data, setData] = useState<T>({} as T)
@@ -41,7 +43,7 @@ export default function Form<T>({
         onSubmit(data)
       }}
     >
-      <div>
+      <div className={inputWrapperClassName}>
         {fields.map((field, index) => (
           <Input
             key={index}
