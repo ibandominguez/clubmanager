@@ -1,7 +1,7 @@
 import { create } from 'zustand'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
-import type User from '../types/User'
+import type { User } from '../types.d'
 import Lang from '../services/Lang'
 
 export interface AuthState {

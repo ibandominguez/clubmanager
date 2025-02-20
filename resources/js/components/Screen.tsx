@@ -6,6 +6,8 @@ interface ScreenProps {
   children: React.ReactNode
   title?: string
   showAside?: boolean
+  onMount?: () => void
+  onUnMount?: () => void
   contentClassName?: string
   redirectIfGuest?: boolean
   redirectIfAuthenticated?: boolean
@@ -38,6 +40,8 @@ const Screen: React.FC<ScreenProps> = ({
   children,
   title,
   showAside,
+  onMount,
+  onUnMount,
   contentClassName,
   redirectIfGuest,
   redirectIfAuthenticated
@@ -50,8 +54,18 @@ const Screen: React.FC<ScreenProps> = ({
     if (title) document.title = title
     if (!authToken && redirectIfGuest) {
       navigate('/login')
+      return
     } else if (authToken && redirectIfAuthenticated) {
       navigate('/admin')
+      return
+    }
+    if (onMount) {
+      onMount()
+    }
+    if (onUnMount) {
+      return () => {
+        onUnMount()
+      }
     }
   }, [authToken])
 

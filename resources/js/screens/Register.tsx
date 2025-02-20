@@ -3,7 +3,7 @@ import Screen from '../components/Screen'
 import Form from '../components/Form'
 import Lang from '../services/Lang'
 import { useAuthStore } from '../stores/auth'
-import User from '../types/User'
+import { User } from '../types.d'
 
 function Register(): ReactElement {
   const { register } = useAuthStore()

@@ -33,5 +33,7 @@
   "dashboard.title": "Inicio",
   "dashboard.welcome": "Bienvenido a la aplicación",
 
-  "members.title": "Socios"
+  "members.title": "Socios",
+  "members.fetching": "cargando socios ...",
+  "members.fetched": "socios cargados correctamente!"
 }
