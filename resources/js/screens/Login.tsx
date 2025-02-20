@@ -21,6 +21,7 @@ function Login(): ReactElement {
       contentClassName="flex flex-col items-center justify-center h-screen"
       redirectIfAuthenticated={true}
     >
+      <img className="w-20" src="/images/logo.png" />
       <Form<{ email: string; password: string }>
         className="p-3 bg-white bg-opacity-50 rounded-md"
         buttonIcon="login"

@@ -28,7 +28,7 @@ export function NavLinkItem({
       to={to}
       end
       className={({ isActive }) =>
-        `p-3 hover:bg-gray-600 hover:text-white hover:rounded-sm border-b-2 border-white flex items-center ${isActive ? 'bg-gray-500' : ''}`
+        `p-3 hover:bg-gray-600 hover:text-white hover:rounded-sm border-b-2 border-white flex items-center ${isActive ? 'bg-gray-500 text-gray-200' : ''}`
       }
     >
       {icon && (
