@@ -23,6 +23,6 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <Route path="/admin/members" element={<Members />} />
       </Routes>
     </BrowserRouter>
-    <Toaster />
+    <Toaster toastOptions={{ position: 'bottom-right' }} />
   </ErrorBoundary>
 )

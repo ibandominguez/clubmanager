@@ -77,7 +77,7 @@ const Screen: React.FC<ScreenProps> = ({
   }
 
   return (
-    <section className="flex">
+    <section className="flex h-screen">
       {showAside && (
         <aside
           className={`absolute left-0 top-0 z-9999 flex h-screen w-80 flex-shrink-0 flex-col overflow-y-hidden bg-gray-500 duration-300 ease-linear md:static md:translate-x-0 ${showMobileMenu ? 'translate-x-0' : '-translate-x-full'}`}
@@ -107,7 +107,7 @@ const Screen: React.FC<ScreenProps> = ({
           </NavLink>
         </aside>
       )}
-      <main className="w-full">
+      <main className="w-full h-full overflow-y-scroll">
         {title && (
           <h2 className="text-2xl p-4 font-bold h-20 flex items-center bg-gray-200">
             {title}
