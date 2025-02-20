@@ -27,11 +27,13 @@ export function NavLinkItem({
       to={to}
       end
       className={({ isActive }) =>
-        `p-3 hover:bg-gray-200 hover:text-white border-b-2 border-white flex items-center ${isActive ? 'bg-gray-300' : ''}`
+        `p-3 hover:bg-gray-200 hover:text-white hover:rounded-sm border-b-2 border-white flex items-center ${isActive ? 'bg-gray-300' : ''}`
       }
     >
-      {icon && <span className="material-symbols-outlined mr-3">{icon}</span>}
-      <span className="text-md">{title}</span>
+      {icon && (
+        <span className="material-symbols-outlined text-xs mr-3">{icon}</span>
+      )}
+      <span className="text-sm">{title}</span>
     </NavLink>
   )
 }
@@ -80,12 +82,13 @@ const Screen: React.FC<ScreenProps> = ({
     <section className="flex h-screen">
       {showAside && (
         <aside
-          className={`absolute left-0 top-0 z-9999 flex h-screen w-80 flex-shrink-0 flex-col overflow-y-hidden bg-gray-500 duration-300 ease-linear md:static md:translate-x-0 ${showMobileMenu ? 'translate-x-0' : '-translate-x-full'}`}
+          style={{ zIndex: 9999999 }}
+          className={`absolute left-0 top-0 flex h-screen w-60 flex-shrink-0 flex-col overflow-y-hidden bg-gray-500 duration-300 ease-linear md:static md:translate-x-0 ${showMobileMenu ? 'translate-x-0' : '-translate-x-full'}`}
         >
           <section className="flex items-center justify-center text-white h-20 bg-gray-900 font-bold text-2xl">
             CLUBMANAGER
           </section>
-          <nav>
+          <nav className="p-3">
             <NavLinkItem
               to="/admin"
               icon="dashboard"
@@ -102,8 +105,10 @@ const Screen: React.FC<ScreenProps> = ({
             onClick={() => window.localStorage.removeItem('token')}
             className="mt-auto bg-gray-800 p-3 flex justify-center items-center text-gray-300"
           >
-            <span className="material-symbols-outlined mr-3">logout</span>
-            <span>{Lang.get('logout.title')}</span>
+            <span className="material-symbols-outlined text-xs mr-3">
+              logout
+            </span>
+            <span className="text-sm">{Lang.get('logout.title')}</span>
           </NavLink>
         </aside>
       )}
