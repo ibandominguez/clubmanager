@@ -8,6 +8,7 @@ interface ScreenProps {
   showAside?: boolean
   onMount?: () => void
   onUnMount?: () => void
+  style?: React.CSSProperties
   contentClassName?: string
   redirectIfGuest?: boolean
   redirectIfAuthenticated?: boolean
@@ -44,6 +45,7 @@ const Screen: React.FC<ScreenProps> = ({
   showAside,
   onMount,
   onUnMount,
+  style,
   contentClassName,
   redirectIfGuest,
   redirectIfAuthenticated
@@ -79,7 +81,7 @@ const Screen: React.FC<ScreenProps> = ({
   }
 
   return (
-    <section className="flex h-screen">
+    <section className="flex h-screen" style={style}>
       {showAside && (
         <aside
           style={{ zIndex: 9999999 }}

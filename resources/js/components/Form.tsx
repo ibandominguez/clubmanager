@@ -35,12 +35,13 @@ export default function Form<T>({
 
   return (
     <form
+      className={className}
       onSubmit={(event) => {
         event.preventDefault()
         onSubmit(data)
       }}
     >
-      <div className={className}>
+      <div>
         {fields.map((field, index) => (
           <Input
             key={index}

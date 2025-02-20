@@ -15,10 +15,15 @@ function Register(): ReactElement {
 
   return (
     <Screen
+      style={{
+        backgroundImage: 'url(/images/famara-background.jpg)',
+        backgroundSize: 'cover'
+      }}
       contentClassName="flex flex-col items-center justify-center h-screen"
       redirectIfAuthenticated={true}
     >
       <Form<Partial<User & { password: string; password_confirmation: string }>>
+        className="p-3 bg-white bg-opacity-50 rounded-md"
         buttonIcon="add"
         buttonTitle={Lang.get('register.fields.submit', { ucfirst: true })}
         onSubmit={handleSubmit}
@@ -60,7 +65,7 @@ function Register(): ReactElement {
           }
         ]}
       />
-      <Link to="/login" className="block underline">
+      <Link to="/login" className="block underline text-sm">
         {Lang.get('home.login.link', { ucfirst: true })}
       </Link>
     </Screen>

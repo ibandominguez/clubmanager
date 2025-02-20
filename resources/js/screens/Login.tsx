@@ -14,10 +14,15 @@ function Login(): ReactElement {
 
   return (
     <Screen
+      style={{
+        backgroundImage: 'url(/images/famara-background.jpg)',
+        backgroundSize: 'cover'
+      }}
       contentClassName="flex flex-col items-center justify-center h-screen"
       redirectIfAuthenticated={true}
     >
-      <Form
+      <Form<{ email: string; password: string }>
+        className="p-3 bg-white bg-opacity-50 rounded-md"
         buttonIcon="login"
         buttonTitle={Lang.get('login.fields.submit', { ucfirst: true })}
         onSubmit={handleSubmit}
@@ -40,7 +45,7 @@ function Login(): ReactElement {
           }
         ]}
       />
-      <Link to="/register" className="block underline">
+      <Link to="/register" className="block underline text-sm">
         {Lang.get('home.register.link', { ucfirst: true })}
       </Link>
     </Screen>
