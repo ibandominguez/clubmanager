@@ -1,10 +1,37 @@
 {
   "home.title": "Home",
+  "home.login.link": "Already register? log in",
+  "home.register.link": "Create an account",
 
   "login.title": "Login",
   "login.success": "Welcome!",
   "login.error": "Incorrect credentials",
+  "login.fields.email": "Email",
+  "login.fields.email.placeholder": "Enter your email",
+  "login.fields.password": "Password",
+  "login.fields.password.placeholder": "Enter your password",
+  "login.fields.submit": "Submit",
+
+  "logout.title": "Logout",
+
+  "register.title": "Register",
+  "register.success": "Welcome!",
+  "register.error": "Incorrect credentials",
+  "register.fields.name": "Name",
+  "register.fields.name.placeholder": "Enter your name",
+  "register.fields.email": "Email",
+  "register.fields.email.placeholder": "Enter your email",
+  "register.fields.password": "Password",
+  "register.fields.password.placeholder": "Enter your password",
+  "register.fields.password.confirmation": "Password confirmation",
+  "register.fields.password.confirmation.placeholder": "Repeat your password",
+
+  "register.fields.submit": "Submit",
+
+  "auth.fetch.error": "Error fetching user",
 
   "dashboard.title": "Dashboard",
-  "dashboard.welcome": "Welcome to the application"
+  "dashboard.welcome": "Welcome to the application",
+
+  "members.title": "Members"
 }

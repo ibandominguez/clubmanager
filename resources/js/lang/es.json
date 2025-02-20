@@ -1,11 +1,32 @@
 {
   "home.title": "Inicio",
+  "home.login.link": "Ya tienes cuenta? Inicia sesión",
+  "home.register.link": "Crea una cuenta",
 
   "login.title": "Iniciar sesión",
   "login.success": "¡Bienvenido!",
   "login.error": "Credenciales incorrectas",
+  "login.fields.email": "email",
+  "login.fields.email.placeholder": "introduzca su email",
+  "login.fields.password": "contraseña",
+  "login.fields.password.placeholder": "introduzca su contraseña",
+  "login.fields.submit": "enviar",
 
   "logout.title": "Cerrar sesión",
+
+  "register.title": "Iniciar sesión",
+  "register.success": "¡Bienvenido!",
+  "register.error": "Credenciales incorrectas",
+  "register.fields.name": "nombre",
+  "register.fields.name.placeholder": "introduzca su nombre",
+  "register.fields.email": "email",
+  "register.fields.email.placeholder": "introduzca su email",
+  "register.fields.password": "contraseña",
+  "register.fields.password.placeholder": "introduzca su contraseña",
+  "register.fields.password.confirmation": "confirmación contraseña",
+  "register.fields.password.confirmation.placeholder": "repita su contraseña",
+
+  "register.fields.submit": "enviar",
 
   "auth.fetch.error": "Error al obtener el usuario",
 

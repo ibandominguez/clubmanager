@@ -21,13 +21,15 @@ function Login(): ReactElement {
         onSubmit={handleSubmit}
         fields={[
           {
-            title: Lang.get('login.fields.email'),
+            label: Lang.get('login.fields.email'),
             name: 'email',
+            placeholder: Lang.get('login.fields.email.placeholder'),
             type: 'email'
           },
           {
-            title: Lang.get('login.fields.password'),
+            label: Lang.get('login.fields.password'),
             name: 'password',
+            placeholder: Lang.get('login.fields.email.placeholder'),
             type: 'password'
           }
         ]}

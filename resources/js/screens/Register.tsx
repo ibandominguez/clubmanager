@@ -18,22 +18,28 @@ function Register(): ReactElement {
         onSubmit={(formData) => register(formData as User)}
         fields={[
           {
-            title: Lang.get('register.fields.name'),
+            label: Lang.get('register.fields.name'),
+            placeholder: Lang.get('register.fields.name.placeholder'),
             name: 'name',
             type: 'text'
           },
           {
-            title: Lang.get('register.fields.email'),
+            label: Lang.get('register.fields.email'),
+            placeholder: Lang.get('register.fields.email.placeholder'),
             name: 'email',
             type: 'email'
           },
           {
-            title: Lang.get('register.fields.password'),
+            label: Lang.get('register.fields.password'),
+            placeholder: Lang.get('register.fields.password.placeholder'),
             name: 'password',
             type: 'password'
           },
           {
-            title: Lang.get('register.fields.password.confirmation'),
+            label: Lang.get('register.fields.password.confirmation'),
+            placeholder: Lang.get(
+              'register.fields.password.confirmation.placeholder'
+            ),
             name: 'password_confirmation',
             type: 'password'
           }
