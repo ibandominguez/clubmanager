@@ -52,7 +52,7 @@ export default function Form<T>({
         ))}
       </div>
       <Button
-        className="bg-blue-500 mt-2"
+        className="bg-blue-500 mt-2 w-full flex items-center justify-center"
         icon={buttonIcon}
         type="submit"
         title={buttonTitle}

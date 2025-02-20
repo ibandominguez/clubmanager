@@ -7,7 +7,14 @@ export interface InputProps {
   inputClassName?: string
   required?: boolean
   placeholder?: string
-  type?: 'password' | 'text' | 'number' | 'select' | 'checkbox' | 'hidden'
+  type?:
+    | 'password'
+    | 'text'
+    | 'number'
+    | 'select'
+    | 'checkbox'
+    | 'hidden'
+    | 'email'
   value?: string | number
   options?: { name: string; value: string | number }[]
   onChange: (value: string | number) => void

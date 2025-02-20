@@ -10,7 +10,7 @@
   "login.fields.email.placeholder": "introduzca su email",
   "login.fields.password": "contraseña",
   "login.fields.password.placeholder": "introduzca su contraseña",
-  "login.fields.submit": "enviar",
+  "login.fields.submit": "acceder",
 
   "logout.title": "Cerrar sesión",
 
@@ -25,8 +25,7 @@
   "register.fields.password.placeholder": "introduzca su contraseña",
   "register.fields.password.confirmation": "confirmación contraseña",
   "register.fields.password.confirmation.placeholder": "repita su contraseña",
-
-  "register.fields.submit": "enviar",
+  "register.fields.submit": "registrarse",
 
   "auth.fetch.error": "Error al obtener el usuario",
 
