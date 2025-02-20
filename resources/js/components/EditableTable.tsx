@@ -127,12 +127,13 @@ export default function EditableTable<T>({
           <Form<T>
             buttonIcon="send"
             buttonTitle="Enviar"
+            className="p-5"
             inputWrapperClassName="flex flex-wrap"
             onSubmit={(item) => handleOnUpdate(item as T)}
             fields={columns.map((column) => ({
               label: column.title,
               name: column.key as keyof T,
-              className: 'w-full',
+              className: 'w-full text-sm',
               type:
                 typeof selectedItem[column.key] === 'number'
                   ? 'number'

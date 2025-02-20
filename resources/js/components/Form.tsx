@@ -47,6 +47,7 @@ export default function Form<T>({
         {fields.map((field, index) => (
           <Input
             key={index}
+            className="text-sm"
             {...field}
             name={field.name as string}
             value={data[field.name] as string | number | undefined}
