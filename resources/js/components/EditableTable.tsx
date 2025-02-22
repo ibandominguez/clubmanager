@@ -11,17 +11,19 @@ export interface EditableTableFieldProps<T> {
 export interface EditableTableProps<T> {
   title?: string
   columns: EditableTableFieldProps<T>[]
+  itemId?: string
   data: T[]
   initialSortingKey: Extract<keyof T, string>
   editable?: boolean
-  onCreate?: (item: T) => Promise<T>
-  onUpdate?: (item: T) => Promise<T>
-  onDelete?: (item: T) => Promise<T>
+  onCreate?: (item: T) => Promise<void>
+  onUpdate?: (item: T) => Promise<void>
+  onDelete?: (item: T) => Promise<void>
 }
 
 export default function EditableTable<T>({
   title,
   columns,
+  itemId = 'id',
   data,
   initialSortingKey,
   editable,
@@ -49,26 +51,16 @@ export default function EditableTable<T>({
     return sorted
   }, [data, sortingKey])
 
-  const handleOnUpdate = async (item: T) => {
+  const handleEditAction = async (item: T, type = 'create') => {
     setIsLoading(true)
-    try {
-      onUpdate && (await onUpdate(item))
-    } catch (error) {
-      // handle error
-    } finally {
-      setIsLoading(false)
+    if (type === 'create' && onCreate) {
+      await onCreate(item)
+    } else if (type === 'update' && onUpdate) {
+      await onUpdate(item)
+    } else if (type === 'delete' && onDelete) {
+      await onDelete(item)
     }
-  }
-
-  const handleOnDelete = async (item: T) => {
-    setIsLoading(true)
-    try {
-      onDelete && (await onDelete(item))
-    } catch (error) {
-      // handle error
-    } finally {
-      setIsLoading(false)
-    }
+    setIsLoading(false)
   }
 
   const handleSetSort = (key: string) => {
@@ -146,7 +138,7 @@ export default function EditableTable<T>({
                   {onDelete && (
                     <button
                       className="ml-3 material-symbols-outlined text-red-500"
-                      onClick={() => handleOnDelete(item)}
+                      onClick={() => handleEditAction(item, 'delete')}
                     >
                       delete
                     </button>
@@ -172,7 +164,9 @@ export default function EditableTable<T>({
             buttonTitle="Enviar"
             className="p-5"
             inputWrapperClassName="flex flex-wrap"
-            onSubmit={(item) => handleOnUpdate(item as T)}
+            onSubmit={(item) =>
+              handleEditAction(item, item[itemId] ? 'update' : 'create')
+            }
             fields={columns.map((column) => ({
               label: column.title,
               name: column.key as keyof T,

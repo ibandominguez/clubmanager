@@ -34,5 +34,11 @@
 
   "members.title": "Socios",
   "members.fetching": "cargando socios ...",
-  "members.fetched": "socios cargados correctamente!"
+  "members.fetched": "socios cargados correctamente!",
+  "members.creating": "creando socio ...",
+  "members.created": "socio creado!",
+  "members.updating": "actualizando socio ...",
+  "members.updated": "socio actualizado!",
+  "members.deleting": "borrando socio ...",
+  "members.deleted": "socio borrado!"
 }

@@ -6,7 +6,8 @@ import { Member } from '../types.d'
 import { useMembersStore } from '../stores/members'
 
 function Members(): ReactElement {
-  const { members, fetchMembers } = useMembersStore()
+  const { members, fetchMembers, createMember, updateMember, deleteMember } =
+    useMembersStore()
 
   return (
     <Screen
@@ -20,9 +21,9 @@ function Members(): ReactElement {
         title={Lang.get('members.title')}
         editable={true}
         initialSortingKey="id"
-        onCreate={Promise.resolve}
-        onUpdate={Promise.resolve}
-        onDelete={Promise.resolve}
+        onCreate={createMember}
+        onUpdate={updateMember}
+        onDelete={deleteMember}
         data={members}
         columns={[
           { title: 'Código', key: 'id', sortable: true },
