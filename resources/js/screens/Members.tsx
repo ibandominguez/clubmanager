@@ -19,12 +19,14 @@ function Members(): ReactElement {
       <EditableTable<Member>
         title={Lang.get('members.title')}
         editable={true}
+        initialSortingKey="id"
         onCreate={Promise.resolve}
         onUpdate={Promise.resolve}
         onDelete={Promise.resolve}
         data={members}
         columns={[
-          { title: 'Nombre', key: 'name' },
+          { title: 'Código', key: 'id', sortable: true },
+          { title: 'Nombre', key: 'name', sortable: true },
           { title: 'Registro', key: 'registered_at' }
         ]}
       />

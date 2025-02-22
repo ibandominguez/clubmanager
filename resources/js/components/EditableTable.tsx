@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from 'react'
 import Form from '../components/Form'
 
 export interface EditableTableFieldProps<T> {
   key: keyof T
   title: string
+  sortable?: boolean
   render?: (item: T) => string
 }
 
@@ -11,6 +12,7 @@ export interface EditableTableProps<T> {
   title?: string
   columns: EditableTableFieldProps<T>[]
   data: T[]
+  initialSortingKey: Extract<keyof T, string>
   editable?: boolean
   onCreate?: (item: T) => Promise<T>
   onUpdate?: (item: T) => Promise<T>
@@ -21,13 +23,31 @@ export default function EditableTable<T>({
   title,
   columns,
   data,
+  initialSortingKey,
   editable,
   onCreate,
   onUpdate,
   onDelete
 }: EditableTableProps<T>) {
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [sortingKey, setSortingKey] = useState<string>(initialSortingKey)
   const [selectedItem, setSelectedItem] = useState<T | null>(null)
+
+  const sortedData = useMemo(() => {
+    const sorted = [...data].sort((a, b) => {
+      const key = sortingKey.startsWith('-') ? sortingKey.slice(1) : sortingKey
+      const order = sortingKey.startsWith('-') ? -1 : 1
+      const aValue = a[key]
+      const bValue = b[key]
+
+      if (typeof aValue === 'number' && typeof bValue === 'number') {
+        return order * (aValue - bValue)
+      } else {
+        return order * String(aValue).localeCompare(String(bValue))
+      }
+    })
+    return sorted
+  }, [data, sortingKey])
 
   const handleOnUpdate = async (item: T) => {
     setIsLoading(true)
@@ -51,6 +71,16 @@ export default function EditableTable<T>({
     }
   }
 
+  const handleSetSort = (key: string) => {
+    if (sortingKey === key) {
+      setSortingKey(`-${key}`)
+    } else if (sortingKey === `-${key}`) {
+      setSortingKey(key)
+    } else {
+      setSortingKey(key)
+    }
+  }
+
   return (
     <section className="relative overflow-x-auto">
       <header className="flex items-center p-3">
@@ -68,7 +98,20 @@ export default function EditableTable<T>({
         <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
           {columns.map((column: EditableTableFieldProps<T>) => (
             <th scope="col" className="px-6 py-3" key={column.key as string}>
-              {column.title}
+              <span
+                className="flex items-center cursor-pointer"
+                onClick={() =>
+                  column.sortable && handleSetSort(column.key as string)
+                }
+              >
+                {(sortingKey === column.key ||
+                  sortingKey === `-${column.key as string}`) && (
+                  <span className="text-xs material-symbols-outlined mr-2">
+                    {sortingKey[0] === '-' ? 'arrow_downward' : 'arrow_upward'}
+                  </span>
+                )}
+                {column.title}
+              </span>
             </th>
           ))}
           {editable && (onUpdate || onDelete) && (
@@ -78,7 +121,7 @@ export default function EditableTable<T>({
           )}
         </thead>
         <tbody>
-          {data.map((item, index) => (
+          {sortedData.map((item, index) => (
             <tr
               key={index}
               className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200"
