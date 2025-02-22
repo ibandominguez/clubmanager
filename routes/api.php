@@ -12,7 +12,7 @@ Route::get('/users/me', [UserController::class, 'showMe'])->middleware('auth:san
 
 Route::get('/members', [MemberController::class, 'index'])->middleware('auth:sanctum');
 Route::get('/members/{id}', [MemberController::class, 'show'])->middleware('auth:sanctum');
-Route::post('/members', [MemberController::class, 'create'])->middleware('auth:sanctum');
+Route::post('/members', [MemberController::class, 'store'])->middleware('auth:sanctum');
 Route::put('/members/{id}', [MemberController::class, 'update'])->middleware('auth:sanctum');
 Route::delete('/members/{id}', [MemberController::class, 'destroy'])->middleware('auth:sanctum');
 
