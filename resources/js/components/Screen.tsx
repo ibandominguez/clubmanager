@@ -116,7 +116,7 @@ const Screen: React.FC<ScreenProps> = ({
       )}
       <main className="w-full h-full overflow-y-scroll">
         {title && (
-          <h2 className="text-2xl p-4 font-bold h-20 flex items-center bg-gray-200">
+          <h2 className="text-2xl p-4 font-bold h-20 flex items-center bg-gray-200 fixed z-50 w-full">
             {title}
             <span
               onClick={() => setShowMobileMenu(!showMobileMenu)}
@@ -126,7 +126,9 @@ const Screen: React.FC<ScreenProps> = ({
             </span>
           </h2>
         )}
-        <section className={contentClassName}>{children}</section>
+        <section className={`${contentClassName} ${title ? '!mt-20' : ''}`}>
+          {children}
+        </section>
       </main>
     </section>
   )
