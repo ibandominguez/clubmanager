@@ -1,5 +1,12 @@
-import React, { useEffect, useMemo, useState, ReactElement } from 'react'
+import React, {
+  ReactElement,
+  ReactNode,
+  useEffect,
+  useMemo,
+  useState
+} from 'react'
 import { useNavigate, NavLink } from 'react-router'
+import { NavLinkItem } from './NavLinkItem'
 import Lang from '../services/Lang'
 
 interface ScreenProps {
@@ -14,32 +21,7 @@ interface ScreenProps {
   redirectIfAuthenticated?: boolean
 }
 
-export function NavLinkItem({
-  to,
-  icon,
-  title
-}: {
-  to: string
-  icon: string
-  title: string
-}): ReactElement {
-  return (
-    <NavLink
-      to={to}
-      end
-      className={({ isActive }) =>
-        `p-3 hover:bg-gray-600 hover:text-white hover:rounded-sm border-b-2 border-white flex items-center ${isActive ? 'bg-gray-500 text-gray-200' : ''}`
-      }
-    >
-      {icon && (
-        <span className="material-symbols-outlined text-xs mr-3">{icon}</span>
-      )}
-      <span className="text-sm">{title}</span>
-    </NavLink>
-  )
-}
-
-const Screen: React.FC<ScreenProps> = ({
+export default function Screen({
   children,
   title,
   showAside,
@@ -49,7 +31,7 @@ const Screen: React.FC<ScreenProps> = ({
   contentClassName,
   redirectIfGuest,
   redirectIfAuthenticated
-}) => {
+}: ScreenProps): ReactNode {
   const navigate = useNavigate()
   const authToken = useMemo(() => localStorage.getItem('token'), [])
   const [showMobileMenu, setShowMobileMenu] = useState<boolean>(false)
@@ -135,5 +117,3 @@ const Screen: React.FC<ScreenProps> = ({
     </section>
   )
 }
-
-export default Screen
