@@ -15,14 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('uid')->unique();
             $table->string('name');
-            $table->string('photo_url');
-            $table->date('dob');
-            $table->string('dni_nie');
-            $table->string('address');
-            $table->string('phone');
-            $table->string('email');
-            $table->dateTime('registered_at');
-            $table->boolean('is_retired');
+            $table->string('photo_url')->nullable();
+            $table->date('dob')->nullable();
+            $table->string('dni_nie')->nullable();
+            $table->string('address')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('email')->nullable();
+            $table->dateTime('registered_at')->nullable();
+            $table->boolean('is_retired')->nullable();
             $table->timestamps();
         });
     }

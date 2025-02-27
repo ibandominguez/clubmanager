@@ -17,7 +17,7 @@ class MemberFactory extends Factory
     public function definition(): array
     {
         return [
-            'uid' => $this->faker->unique()->uuid,
+            'uid' => $this->faker->unique()->randomNumber(nbDigits: 3),
             'name' => $this->faker->name,
             'photo_url' => $this->faker->imageUrl(640, 480, 'people'),
             'dob' => $this->faker->date('Y-m-d', '2000-01-01'),
