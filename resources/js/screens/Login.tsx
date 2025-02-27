@@ -14,16 +14,12 @@ function Login(): ReactElement {
 
   return (
     <Screen
-      style={{
-        backgroundImage: 'url(/images/famara-background.jpg)',
-        backgroundSize: 'cover'
-      }}
       contentClassName="flex flex-col items-center justify-center h-screen"
       redirectIfAuthenticated={true}
     >
-      <img className="w-20" src="/images/logo.png" />
+      <img className="w-24" src="/images/logo.png" />
       <Form<{ email: string; password: string }>
-        className="p-3 bg-white bg-opacity-50 rounded-md"
+        className="p-3 bg-gray-100 rounded-md my-3"
         buttonIcon="login"
         buttonTitle={Lang.get('login.fields.submit', { ucfirst: true })}
         onSubmit={handleSubmit}

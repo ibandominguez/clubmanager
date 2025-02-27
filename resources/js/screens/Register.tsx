@@ -15,16 +15,12 @@ function Register(): ReactElement {
 
   return (
     <Screen
-      style={{
-        backgroundImage: 'url(/images/famara-background.jpg)',
-        backgroundSize: 'cover'
-      }}
       contentClassName="flex flex-col items-center justify-center h-screen"
       redirectIfAuthenticated={true}
     >
       <img className="w-20" src="/images/logo.png" />
       <Form<Partial<User & { password: string; password_confirmation: string }>>
-        className="p-3 bg-white bg-opacity-50 rounded-md"
+        className="p-3 bg-gray-100 rounded-md my-3"
         buttonIcon="add"
         buttonTitle={Lang.get('register.fields.submit', { ucfirst: true })}
         onSubmit={handleSubmit}
