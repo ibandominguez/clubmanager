@@ -15,6 +15,7 @@ export interface Field<T> extends InputProps {
 export interface EditableTableProps<T> {
   title?: string
   searchPlaceholder?: string
+  noResultsMessage?: string
   fields: Field<T>[]
   itemId?: string
   data: T[]
@@ -28,6 +29,7 @@ export interface EditableTableProps<T> {
 export default function EditableTable<T>({
   title,
   searchPlaceholder = 'Search ...',
+  noResultsMessage = 'No results ...',
   fields,
   itemId = 'id',
   data,
@@ -151,6 +153,13 @@ export default function EditableTable<T>({
           )}
         </thead>
         <tbody>
+          {!sortedData.length && (
+            <tr>
+              <td colSpan={formattedFields.length} className="text-center">
+                {noResultsMessage}{' '}
+              </td>
+            </tr>
+          )}
           {sortedData.map((item, index) => (
             <tr
               key={index}
