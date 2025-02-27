@@ -1,9 +1,30 @@
 import React, { ReactElement, useEffect, useState } from 'react'
 import Input, { InputProps } from './Input'
 import Button from './Button'
+import moment from 'moment'
 
-export type FormField<T> = Omit<InputProps, 'onChange' | 'name'> & {
+export type FormField<T> = Omit<InputProps, 'onChange' | 'name' | 'type'> & {
   name: keyof T
+  type?:
+    | 'text'
+    | 'number'
+    | 'date'
+    | 'time'
+    | 'email'
+    | 'password'
+    | 'tel'
+    | 'url'
+    | 'search'
+    | 'color'
+    | 'range'
+    | 'checkbox'
+    | 'radio'
+    | 'file'
+    | 'hidden'
+    | 'image'
+    | 'month'
+    | 'week'
+    | 'datetime-local'
 }
 
 export interface FormProps<T> {
@@ -31,7 +52,11 @@ export default function Form<T>({
 
   useEffect(() => {
     fields.forEach((field) => {
-      setDataKey(field.name, field.value)
+      let finalValue = field.value
+      if (field.type === 'date') {
+        finalValue = moment(field.value).format('YYYY-MM-DD')
+      }
+      setDataKey(field.name, finalValue)
     })
   }, [fields])
 
@@ -51,7 +76,12 @@ export default function Form<T>({
             {...field}
             name={field.name as string}
             value={data[field.name] as string | number | undefined}
-            onChange={(value) => setDataKey(field.name, value)}
+            onChange={(value) =>
+              setDataKey(
+                field.name,
+                field.type === 'number' ? parseFloat(value as string) : value
+              )
+            }
           />
         ))}
       </div>

@@ -1,6 +1,7 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, InputHTMLAttributes } from 'react'
 
-export interface InputProps {
+export interface InputProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange'> {
   name: string
   label?: string
   className?: string
@@ -8,13 +9,27 @@ export interface InputProps {
   required?: boolean
   placeholder?: string
   type?:
-    | 'password'
     | 'text'
     | 'number'
-    | 'select'
-    | 'checkbox'
-    | 'hidden'
+    | 'date'
+    | 'time'
     | 'email'
+    | 'password'
+    | 'tel'
+    | 'url'
+    | 'search'
+    | 'color'
+    | 'range'
+    | 'checkbox'
+    | 'radio'
+    | 'file'
+    | 'hidden'
+    | 'image'
+    | 'month'
+    | 'week'
+    | 'datetime-local'
+    | 'select'
+    | 'textarea'
   value?: string | number
   options?: { name: string; value: string | number }[]
   onChange: (value: string | number) => void
