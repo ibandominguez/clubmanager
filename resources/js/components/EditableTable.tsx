@@ -2,10 +2,9 @@ import React, { ReactNode, useMemo, useState } from 'react'
 import Form from '../components/Form'
 import Input, { InputProps } from './Input'
 
-export interface Field<T> extends InputProps {
+export interface Field<T> extends Omit<InputProps, 'onChange'> {
   name: Extract<keyof T, string>
   label: string
-  type?: 'text' | 'email' | 'password' | 'number'
   listable?: boolean
   sortable?: boolean
   editable?: boolean
