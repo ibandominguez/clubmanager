@@ -126,7 +126,9 @@ const Screen: React.FC<ScreenProps> = ({
             </span>
           </h2>
         )}
-        <section className={`${contentClassName} ${title ? '!mt-20' : ''}`}>
+        <section
+          className={`!relative ${contentClassName} ${title ? '!mt-20' : ''}`}
+        >
           {children}
         </section>
       </main>
